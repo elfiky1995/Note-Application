@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --background-color: #EFF5F5;
+    --shadow: 0px 0px 10px 2px rgba(214, 228, 229, 0.5);
+    --button-color: #fe8463;
+    --hover-color: #EB6440;
+}
+
+body {
+    background-color: var(--background-color);
+    color: #497174;
+}
+
+.wrapper {
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 265px);
+    gap: 15px;
+}
+
+.wrapper>li {
+    height: 250px;
+    list-style: none;
+    background-color: white;
+    padding: 15px 20px 20px;
+    border-radius: 5px;
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
+}
+
+.wrapper>li:first-child {
+    background-color: var(--button-color);
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.wrapper>li:first-child::after {
+    position: absolute;
+    content: "";
+    background-color: var(--hover-color);
+    width: 0;
+    height: 0;
+    top: 0;
+    transition: 0.3s;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.wrapper li:first-child:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper li.add-box,
+.wrapper li.add-box .icon,
+.note .bottom-content,
+.popup-box .popup .content header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapper .note .details {
+    max-height: 165px;
+    overflow-y: auto;
+}
+
+.wrapper li.add-box .icon {
+    border: 2px dotted var(--background-color);
+    height: 78px;
+    width: 78px;
+    border-radius: 50%;
+    color: white;
+    font-size: 40px;
+}
+
+.add-box i,
+.add-box p {
+    color: var(--background-color);
+}
+
+.add-box p {
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.note p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.note span {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #4971744c;
+}
+
+.note .bottom-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.note .bottom-content {
+    margin-top: 20px;
+    padding-top: 8px;
+    border-top: 1px solid #4971747c;
+}
+
+.note .bottom-content span,
+.note .bottom-content .settings i {
+    color: #497174;
+    opacity: 0.5;
+}
+
+.note .bottom-content .settings i {
+    cursor: pointer;
+}
+
+.note .bottom-content .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+    -webkit-box-shadow: var(--shadow);
+    -moz-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
+}
+
+.note .bottom-content .settings.show .menu {
+    transform: scale(1);
+}
+
+.settings ul.menu {
+    display: flex;
+}
+
+.settings ul.menu li {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+    transition: 0.3s;
+    padding: 0 10px;
+}
+
+.settings ul.menu li:hover {
+    background-color: var(--background-color);
+}
+
+.popup-box {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.popup-box .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    width: 100%;
+    max-width: 400px;
+    transform: translate(-50%, -50%);
+}
+
+/*Hiding the popup to re-Showing it by JS*/
+.popup-box,
+.popup-box .popup {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/*Showing the popup by adding (.show) class to it by JS*/
+.popup-box.show,
+.popup-box.show .popup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-box .popup .content {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.popup-box .popup .content header {
+    padding: 15px 25px;
+    border-bottom: 1px solid #4971747c;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.popup-box .popup .content header p {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.popup-box .popup .content header i {
+    font-size: 23px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s ease;
+}
+
+.popup-box .popup .content header i:hover {
+    opacity: 1;
+}
+
+.popup-box .popup .content header i:active {
+    background-color: var(--background-color);
+    border-radius: 3px;
+}
+
+.popup-box .popup .content form {
+    margin: 15px 25px 35px;
+}
+
+.popup-box .popup .content form :where(input, textarea) {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #497174;
+    opacity: 0.5;
+    outline: none;
+    border: 1px solid #497174;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 15px;
+}
+
+.popup-box .popup .content form .row {
+    margin-top: 20px;
+}
+
+.popup-box .popup .content form .row label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.popup-box .popup .content form .row ::placeholder {
+    color: #497174;
+}
+
+.popup-box .popup .content form textarea {
+    height: 150px;
+    resize: none;
+    padding-top: 10px;
+}
+
+.popup-box .popup .content form button {
+    width: 100%;
+    height: 40px;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 15px 0;
+    transition: 0.3s;
+}
+
+.popup-box .popup .content form button:hover {
+    background-color: var(--hover-color);
+}
