@@ -110,6 +110,7 @@ body {
     margin-top: 5px;
     font-size: 16px;
     color: #4971744c;
+    word-break: break-all;
 }
 
 .note .bottom-content {
