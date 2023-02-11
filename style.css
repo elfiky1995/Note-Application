@@ -103,6 +103,7 @@ body {
 .note p {
     font-size: 22px;
     font-weight: 500;
+    word-break: break-all;
 }
 
 .note span {
