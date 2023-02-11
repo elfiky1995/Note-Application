@@ -103,6 +103,7 @@ body {
 .note p {
     font-size: 22px;
     font-weight: 500;
+    word-break: break-all;
 }
 
 .note span {
@@ -110,6 +111,7 @@ body {
     margin-top: 5px;
     font-size: 16px;
     color: #4971744c;
+    word-break: break-all;
 }
 
 .note .bottom-content {
